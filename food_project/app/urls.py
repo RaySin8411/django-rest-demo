@@ -1,4 +1,4 @@
-"""food_project URL Configuration
+"""app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.views import hello
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('hello/', hello),
 ]
