@@ -7,6 +7,7 @@ RUN mkdir /app
 WORKDIR /app
 
 RUN git clone https://github.com/q8977452/django-rest-demo.git
+RUN ls -l
 RUN pip install -r django-rest-demo/requirements.txt
 
 
