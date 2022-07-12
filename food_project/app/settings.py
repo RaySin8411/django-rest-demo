@@ -40,12 +40,12 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'rest_auth',
+    'drf_yasg',
 
     # customer
     'products',
     'users',
     'food',
-
 
 ]
 
