@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <!--head含meta&css-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Jamie Huang's Blog use django to create your own website
+         and familiarize models ,templates and views system (MVC)
+         — Blog & To-do-list & BBS social media | Heroku.">
+        <title>
+            {% block title %} 關於我 | Django Test Website{% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    </head>
+    <body>
+        {% block content %}
+        <br/>
+        <!--名片-->
+        <h3 class="page_title">
+            My Name Card
+        </h3>
+        <div class="namecard">
+            <h2 class="name">辛祐任
+                <span class="little_eng">
+                    (Ray-Sin)
+                </span>
+            </h2>
+            <h5 class="job">
+                Web-Backend Soft-Engineer
+            </h5>
+            <hr>
+            <p class="description">
+                統研所畢業，相信沉浸「心流」狀態，會讓工作更有意義。
+            </p>
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+        </div>
+
+        {% endblock %}
+    </body>
+</html>

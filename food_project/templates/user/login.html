@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--    網頁描述-->
+        <meta name="description" content="Test Django Website">
+        <!--    網頁描述-->
+        <!-- 套boostrap 但title 是自己的 -->
+        <title>
+            {% block title %}
+                Login 會員登入頁面 |  Django 測試網站
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        {% block content %}
+        <br>
+        <!--輸入帳號密碼資訊-->
+        <div class="login-text">
+            <div class="basic-account">
+                <h5>
+                    Login 會員登入或是選擇
+                    <a href="{% url 'user:registration' %}">
+                        加入會員
+                    </a>
+                </h5>
+                <hr>
+                <p>
+                    請輸入以下帳號及密碼
+                </p>
+            </div>
+            <!--輸入帳號密碼核對form-->
+            <form class="post-form" method = "POST" action='.'>
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
+                    登入
+                </button>
+            </form>
+            <br>
+            <!--google API登入    -->
+            <button type="button" class="btn btn-outline-success google">
+                <a href="{% url 'social:begin' 'google-oauth2' %}">
+                    使用第三方 Google 登入
+                </a>
+            </button>
+            &emsp; / &emsp;
+            <!--instagram API登入        -->
+            <button type="button" class="btn btn-outline-success instagram">
+                <a href="{% url 'social:begin' 'instagram' %}">
+                    使用第三方 Instagram 登入
+                </a>
+            </button>
+            &emsp; / &emsp;
+            <!--    github API登入-->
+            <button type="button" class="btn btn-outline-success github">
+                <a href="{% url 'social:begin' 'github' %}">
+                    使用第三方 Github 登入
+                </a>
+            </button> &emsp;
+        </div>
+        {% endblock %}
+    </body>
+</html>
