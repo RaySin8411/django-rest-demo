@@ -32,14 +32,15 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
+handler404 = 'app.views.view_404'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('', hello),
+    path("", include("users.urls")),
     path("api/", include("products.urls")),
     path("api/", include("food.urls")),
-    path("api/", include("users.urls")),
     path("api/", include("infra.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/rest-auth", include("rest_auth.urls")),
