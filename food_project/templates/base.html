@@ -49,14 +49,15 @@
               </ul>
               <!--判斷 login or logout-->
               {% if request.user.is_authenticated %}
-                  <a href="{% url 'logout' %}" class="btn btn-link btn-sm active mr-sm-0" role="button" aria-pressed="true">
-                  安安！{{ request.user.first_name }}，Logout
+              安安！
+                  <a href="{% url 'user:logout' %}" class="btn btn-link btn-sm active mr-sm-0" role="button" aria-pressed="true">
+                  {{ request.user.first_name }}，Logout
                   </a>/
-                  <a href="{% url 'password_change' %}" class="btn btn-link btn-sm active" role="button" aria-pressed="true">
+                  <a href="{% url 'user:password_change' %}" class="btn btn-link btn-sm active" role="button" aria-pressed="true">
                   更改密碼
                   </a>
               {% else %}
-                  <a href="{% url 'login' %}" class="btn btn-link btn-lg active mr-sm-0" role="button" aria-pressed="true">
+                  <a href="{% url 'user:login' %}" class="btn btn-link btn-lg active mr-sm-0" role="button" aria-pressed="true">
                       Login 會員登入
                   </a>
               {% endif %}
