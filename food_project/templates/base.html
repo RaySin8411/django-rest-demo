@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="zh-Hant">
+<!--  head 標籤-->
+  <head>
+    <meta charset="utf-8">
+<!--    viewpoint 為調整在使用者在觀看頁面顯示情況不會依裝置改變-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Jamie Huang's Blog use django to create your own website
+     and familiarize models ,templates and views system (MVC)
+     — Blog & To-do-list & BBS social media | Heroku.">
+    <!-- 自己本身樣式 CSS 與Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    <!--把title替換掉 -->
+    <title>
+        {% block title %} {% endblock %}
+    </title>
+<!--      利用內嵌式 CSS 去修改 -->
+  </head>
+  <!--body分為1.導覽列 2.div-container-->
+  <body>
+  <!--  navbar開始-->
+      {% block navbar %}
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="{% url 'index' %}">
+              Test Website
+          </a>
+          <!--導覽列手機點選下滑清單-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!--導覽列清單-->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item nav-hover">
+                      <a class="nav-link" href="{% url 'index' %}">Home</a>
+                  </li>
+
+                  <li class="nav-item nav-hover">
+                      <a class="nav-link" href="{% url 'website_log' %}">網站開發史</a>
+                  </li>
+              <!--手機點選下滑清單    -->
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+              </ul>
+              <!--判斷 login or logout-->
+              {% if request.user.is_authenticated %}
+                  <a href="{% url 'logout' %}" class="btn btn-link btn-sm active mr-sm-0" role="button" aria-pressed="true">
+                  安安！{{ request.user.first_name }}，Logout
+                  </a>/
+                  <a href="{% url 'password_change' %}" class="btn btn-link btn-sm active" role="button" aria-pressed="true">
+                  更改密碼
+                  </a>
+              {% else %}
+                  <a href="{% url 'login' %}" class="btn btn-link btn-lg active mr-sm-0" role="button" aria-pressed="true">
+                      Login 會員登入
+                  </a>
+              {% endif %}
+          </div>
+      </nav>
+      {% endblock %}
+      <!--body-container-->
+      <div class="container">
+          {% block content %}
+          {% endblock %}
+      </div>
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <!--搜尋query-->
+      <script type="text/javascript">
+          document.getElementById("id_q").value={{ query }}
+      </script>
+      <!--body內的footer-->
+      <footer class="footer">
+           CopyRight &copy; All Right Reserved. &nbsp;&nbsp;Email : q8977452@gmail.com
+      </footer>
+  </body>
+</html>

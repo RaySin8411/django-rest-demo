@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="zh-Hant">
+<!--head含meta & link css-->
+  <head>
+    <!--meta  -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Jamie Huang's Blog use django to create your own website
+     and familiarize models ,templates and views system (MVC)
+     — Blog & To-do-list & BBS social media | Heroku.">
+    <!--title  -->
+    <title>
+        {% block title %}
+           Django Test Website
+        {% endblock %}
+    </title>
+    <!-- Bootstrap CSS & 自己 CSS  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+  </head>
+<!--body-->
+{% block content %}
+<body>
+    <div class="index_text">
+        用 Django 與 Bootstrap 試著寫寫程式 <br>
+        <h5 class="index_li">
+            如有功能問題或是意見交流歡迎寫信聯絡我，Email: q8977452@gmail.com。
+            點進網頁的你，現在沒什麼功能唷！
+            只有 可以註冊帳號或是使用第三方 Social-media 註冊！
+        </h5>
+    </div>
+    <br/>
+
+
+</body>
+{% endblock %}
+</html>

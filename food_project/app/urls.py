@@ -35,9 +35,12 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('social-auth/', include('social_django.urls', namespace='social')),
     path('hello/', hello),
     path("api/", include("products.urls")),
     path("api/", include("food.urls")),
+    path("api/", include("users.urls")),
+    path("api/", include("infra.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/rest-auth", include("rest_auth.urls")),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
