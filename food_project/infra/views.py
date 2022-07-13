@@ -10,3 +10,8 @@ def index(request):
 def about(request):
     templates = 'infra/about.html'
     return render(request, templates, locals(), )
+
+
+def website_log(request):
+    templates = 'infra/website_log.html'
+    return render(request, templates, locals(), )
