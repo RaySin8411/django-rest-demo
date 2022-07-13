@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- 套boostrap 但title 是自己的 -->
+        <title>
+            {% block title %}
+                Login 成功畫面
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        {% block content %}
+        <br>
+            <h5>
+                {{ username }}，恭喜你登入成功!!!!
+            </h5>
+        <br>
+            <h5>
+                {{ username }}，目前沒什麼功能唷:)
+            </h5><br>
+        {% endblock %}
+    </body>
+</html>

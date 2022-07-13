@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- 套boostrap 但title 是自己的 -->
+        <title>
+            {% block title %}
+                Logout 畫面
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        {% block content %}
+        <br>
+        <h3>
+            登出囉!
+        </h3>
+        <br>
+        {% endblock %}
+    </body>
+</html>
