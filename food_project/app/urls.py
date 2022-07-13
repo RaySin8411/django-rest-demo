@@ -32,19 +32,20 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=(permissions.AllowAny,),
 )
-
-
+handler404 = 'app.views.view_404'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello),
+    path('social-auth/', include('social_django.urls', namespace='social')),
+    path('', hello),
+    path("", include("users.urls")),
     path("api/", include("products.urls")),
     path("api/", include("food.urls")),
+    path("api/", include("infra.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/rest-auth", include("rest_auth.urls")),
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     re_path(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-
 
 ]

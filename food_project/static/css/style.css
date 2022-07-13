@@ -1,0 +1,164 @@
+.striker {
+            text-decoration: line-through;
+}
+
+.date_style {
+          color: black; text-align:center;
+          font-weight: 100; font-size:14px;
+}
+.search {
+        font-style: italic; margin-top:30px;letter-spacing:1.5px;margin-bottom:20px;
+        text-align:center;
+}
+.text_style {
+    line-height:40px;font-size: 16px;letter-spacing:1.5px;
+}
+.alert_style {
+    font-style: italic; font-size: 36px; color: red;letter-spacing:1.5px;
+}
+.card_padding {
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:30px;
+}
+.leave_message {
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom:15px;
+}
+.card_size {
+    min-height: 200px;
+}
+body{
+    width:100%;
+    padding:0px;
+    font-family: 微軟正黑體;
+    box-sizing: border-box;
+}
+.nav-hover:hover{
+    border-bottom: solid 1.5px #f54291;
+}
+.footer{
+    text-align:center; width:100%;
+    background-color:#c2e8ce;
+    border-top: solid 1px black;
+    font-size: 12px; line-height:20px; letter-spacing:3px;
+    padding: 10px;margin-top: 20px;
+}
+.index_text{
+     text-align:center;letter-spacing:5px;
+     font-weight:700; padding-top:30px;
+     font-size:20px;
+}
+.index_li {
+    font-size:14px; letter-spacing:3px;font-family: 微軟正黑體;
+    line-height:40px; font-weight:400; margin-top:25px;
+    text-align:left;
+}
+.blog-art{
+    margin-top:10px; margin-left: auto; margin-right:auto;
+}
+.blog-art-title{
+    font-size:18px; letter-spacing:2px;
+    font-weight: 800;text-align:center;
+    text-decoration:underline;
+}
+
+.hr-blog {
+    border:solid #1089ff 1px;
+}
+.blog-art-text{
+    font-size:12px; letter-spacing:2.5px;
+    font-weight:500; line-height:35px;
+}
+
+.bg {
+  /* The image used */
+  /* Full height */
+     width:100%;height: 100%;
+  /* Center and scale the image nicely */
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+}
+.about-text{
+     text-align:center; font-size:20px; letter-spacing:5px;
+     font-weight:500; margin-bottom:20px; margin-top:20px;
+}
+
+/*名片CSS*/
+.namecard{
+  width:100%; height:80%;
+  padding:20px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:10px;
+  background-color:#eee;
+  position:relative;
+  letter-spacing:1.5px;
+  font-weight:60;
+  color: #252525;
+  overflow: hidden;
+  border: solid #35b0ab;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px -10px rgba(0,0,0,0.4);
+}
+.namecard h2{
+  font-size:22px;
+  font-weight:500;
+  color: rgba(0,0,0,0.7);
+  letter-spacing:3px;
+}
+.namecard span{
+  font-size:12px;
+}
+.namecard h5{
+  margin-top:20px;
+  font-size:10px;
+  font-weight:500;
+  transition:1s;
+}
+.namecard p{
+  font-size:10px;
+  line-height:24px;
+  font-weight:350;
+}
+.circle{
+  width:80px; height:90px;
+  border-radius:80px;
+  position:absolute;
+  transition:1s;
+}
+.circle1{
+  right:70px;bottom:-60px;
+  width:80px;height:80px;
+  background-color:#ff8080;
+  border-radius:50px;
+}
+.circle2{
+  right:-40px;
+  top:-50px;
+  border: solid 2px #f24;
+}
+.namecard:hover .circle{
+  border-radius:0px;
+}
+.namecard:hover h5{
+/*   text-decoration-line: underline;   */
+  border-bottom: 0.5px solid rgba(0,0,0,1);
+  padding-left:5px;
+  font-size:12px;
+}
+/*名片CSS*/
+.web-log {
+    font-size:14px; letter-spacing:2px; font-family: 微軟正黑體;line-height:26px;
+    font-weight:500; margin-bottom:20px; margin-top:30px;
+}
+/* login */
+.login-text {
+    font-size:16px; margin-bottom:30px; font-family:微軟正黑體;
+    letter-spacing:2px; line-height:35px;
+}
+/* login */

@@ -11,7 +11,7 @@ class FoodListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = FoodSerializer
 
 
-class FoodDetailAPIview(generics.RetrieveUpdateDestroyAPIView):
+class FoodDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
     permission_classes = [IsAuthenticated]

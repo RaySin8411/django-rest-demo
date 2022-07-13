@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <!--head 包含meta link css-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content=" Django Test Website and familiarize models ,templates and views system (MVC).">
+        <title>
+        {% block title %}
+            網站開發重大紀錄 | Django Test Website
+        {% endblock %}
+        </title>
+        <!-- Bootstrap CSS & 自己CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href= "{% static 'css/style.css' %}" >
+    </head>
+    <body>
+        {% block content %}
+        <h3 class="about-text">
+            紀錄網站開發的歷史
+        </h3>
+        <hr>
+        <!--網頁log資訊-->
+        <ul>
+            <li class="web-log">
+                2022/07/10 ： 複習 Django
+            </li>
+            <li class="web-log">
+                2022/07/13 ： 撰寫基本網站架構
+            </li>
+        </ul><br>
+        {% endblock %}
+    </body>
+</html>
