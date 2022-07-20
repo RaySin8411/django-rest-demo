@@ -40,6 +40,7 @@ urlpatterns = [
     path('', hello),
     path("", include("users.urls")),
     path("", include("orders.urls")),
+
     path("api/", include("products.urls")),
     path("api/", include("food.urls")),
     path("api/", include("infra.urls")),
