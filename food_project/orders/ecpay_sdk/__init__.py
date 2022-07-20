@@ -2,6 +2,7 @@ from .payment.services import *
 from .logistic.services import *
 
 
+
 class ECPayPaymentSdk(CreateOrder, OrderSearch, OrderSearchPeriodic,
                       CreditDoAction, DownloadMerchantBalance, SearchSingleTransaction,
                       DownloadDisbursementBalance, ExtendFunction):
@@ -25,3 +26,4 @@ class ECPayLogisticSdk(CvsMap, CreateShippingOrder, CreateHomeReturnOrder,
         self.MerchantID = MerchantID
         self.HashKey = HashKey
         self.HashIV = HashIV
+

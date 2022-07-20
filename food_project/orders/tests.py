@@ -8,6 +8,7 @@ from .ecpay_sdk.logistic.enums import *
 
 # Create your tests here.
 def ecpay_payment_test():
+
     order_params = {
         'MerchantTradeNo': datetime.now().strftime("NO%Y%m%d%H%M%S"),
         'StoreID': '',
@@ -18,6 +19,7 @@ def ecpay_payment_test():
         'ItemName': '商品1#商品2',  # 商品名稱，用井字號當分行
         'ReturnURL': 'https://www.ecpay.com.tw/return_url.php',  # 顧客填完付款資料後的跳轉頁面
         'ChoosePayment': ChoosePayment['ALL'],  # 顧客的付費方式
+
 
         # 結帳後，先導到 OrderResultURL，從綠界頁面跳回的頁面
         # 如果沒有參數才會跳轉到 ClientBackURL

@@ -1,6 +1,7 @@
 # coding: utf-8
 import json
 from urllib.parse import quote_plus, parse_qsl
+
 from .enums import *
 from .utils import BasePayment
 

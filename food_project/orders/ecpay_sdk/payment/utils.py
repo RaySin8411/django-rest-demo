@@ -3,6 +3,7 @@ import collections
 import copy
 import hashlib
 import requests
+
 from decimal import Decimal
 from urllib.parse import quote_plus
 
