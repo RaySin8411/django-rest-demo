@@ -3,15 +3,13 @@ import collections
 import copy
 import hashlib
 import requests
-
 from decimal import Decimal
 from urllib.parse import quote_plus
 
 
 class BasePayment(object):
 
-    @staticmethod
-    def merge(x, y):
+    def merge(self, x, y):
         """
         Given two dicts, merge them into a new dict as a shallow copy.
         """
@@ -21,8 +19,7 @@ class BasePayment(object):
 
     # 檢查必填參數
     # 檢查 merge.dict 是否有填正確的值或範圍
-    @staticmethod
-    def check_required_parameter(parameters, patterns):
+    def check_required_parameter(self, parameters, patterns):
         for patten in patterns:
             for k, v in patten.items():
                 if v.get('required') and (v.get('type') is str):
@@ -30,22 +27,21 @@ class BasePayment(object):
                         raise Exception('parameter %s is required.' % k)
                     elif len(parameters.get(k)) == 0:
                         raise Exception('%s content is required.' % k)
-                    elif len(parameters.get(k)) > v.get('max', Decimal('Infinity')):
+                    elif len(parameters.get(k)) > v.get('max'):
                         raise Exception('%s max langth is %d.' %
-                                        (k, v.get('max', Decimal('Infinity'))))
+                                        (k, v.get('max')))
                 elif v.get('required') and (v.get('type') is int):
                     if parameters.get(k) is None:
                         raise Exception('parameter %s is required.' % k)
 
     # 先用 required.dict 設定預設值並產生新 new.required.dict
-    @staticmethod
-    def create_default_dict(parameters):
+    def create_default_dict(self, parameters):
         default_dict = dict()
         for k, v in parameters.items():
             if v['type'] is str:
                 default_dict.setdefault(k, '')
             elif v['type'] is int:
-                default_dict.setdefault(k, -1)
+                default_dict.setdefault(k, 0)
             else:
                 raise Exception('unsupported type!')
         for k, v in parameters.items():
@@ -53,9 +49,8 @@ class BasePayment(object):
                 default_dict[k] = v.get('default')
         return default_dict
 
-    # 將 merge.dict 內的無用參數消除
-    @staticmethod
-    def filter_parameter(parameters, pattern):
+    # 檢查 merge.dict 是否有填正確的值或範圍
+    def filter_parameter(self, parameters, pattern):
         for patten in pattern:
             for k, v in patten.items():
                 if (v.get('required') is False) and (v.get('type') is str):
@@ -66,24 +61,23 @@ class BasePayment(object):
                 elif (v.get('required') is False) and (v.get('type') is int):
                     if parameters.get(k) is None:
                         continue
-                    if parameters.get(k) < 0:
+                    if parameters.get(k) == 0:
                         del parameters[k]
 
     def generate_check_value(self, params):
         _params = copy.deepcopy(params)
 
-        if _params.get('CheckMacValue'):
+        if 'CheckMacValue' in _params:
             _params.pop('CheckMacValue')
 
-        encrypt_type = int(_params.get('EncryptType', 1))
-
-        _params.update({'MerchantID': self.MerchantID})
-
         ordered_params = collections.OrderedDict(
-            sorted(_params.items(), key=lambda k: k[0].lower()))
+            sorted(_params.items(), key=lambda k: k[0]))
 
-        encoding_lst = ['HashKey=%s&' % self.HashKey, ''.join(
-            ['{}={}&'.format(key, value) for key, value in ordered_params.items()]), 'HashIV=%s' % self.HashIV]
+        encoding_lst = []
+        encoding_lst.append('HashKey=%s&' % self.HashKey)
+        encoding_lst.append(''.join(
+            ['{}={}&'.format(key, value) for key, value in ordered_params.items()]))
+        encoding_lst.append('HashIV=%s' % self.HashIV)
 
         safe_characters = '-_.!*()'
 
@@ -91,14 +85,8 @@ class BasePayment(object):
         encoding_str = quote_plus(
             str(encoding_str), safe=safe_characters).lower()
 
-        check_mac_value = ''
-        if encrypt_type == 1:
-            check_mac_value = hashlib.sha256(
-                encoding_str.encode('utf-8')).hexdigest().upper()
-        elif encrypt_type == 0:
-            check_mac_value = hashlib.md5(
-                encoding_str.encode('utf-8')).hexdigest().upper()
-
+        check_mac_value = hashlib.md5(
+            encoding_str.encode('utf-8')).hexdigest().upper()
         return check_mac_value
 
     def integrate_parameter(self, parameters, patterns):
@@ -112,7 +100,6 @@ class BasePayment(object):
         parameters['CheckMacValue'] = self.generate_check_value(parameters)
         return parameters
 
-    @staticmethod
-    def send_post(url, params):
+    def send_post(self, url, params):
         response = requests.post(url, data=params)
         return response

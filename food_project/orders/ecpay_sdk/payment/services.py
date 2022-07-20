@@ -1,8 +1,7 @@
 # coding: utf-8
-import requests
 import json
-import pprint
-from urllib.parse import quote_plus, parse_qsl, parse_qs
+from urllib.parse import quote_plus, parse_qsl
+
 from .enums import *
 from .utils import BasePayment
 
