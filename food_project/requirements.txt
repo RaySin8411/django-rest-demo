@@ -7,7 +7,7 @@ coreschema==0.0.4
 cryptography==37.0.4
 defusedxml==0.7.1
 django-extensions==3.2.0
-Django==3.2.14
+Django==3.2.15
 django-rest-auth==0.9.5
 djangorestframework==3.13.1
 drf-yasg==1.20.0
