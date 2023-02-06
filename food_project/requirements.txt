@@ -16,7 +16,7 @@ inflection==0.5.1
 itypes==1.2.0
 Jinja2==3.1.2
 MarkupSafe==2.1.1
-oauthlib==3.2.1
+oauthlib==3.2.2
 packaging==21.3
 pycparser==2.21
 PyJWT==2.4.0
